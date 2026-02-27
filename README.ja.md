@@ -127,38 +127,7 @@ en:
 </i18n>
 ```
 
-## 🤝 コントリビューション
 
-1. **ガイドラインを読む**: 開発標準について[`AGENTS.md`](./AGENTS.md)を確認
-2. **フィーチャーブランチ作成**: `git checkout -b feature/amazing-feature`
-3. **コードスタイルに従う**: 確立されたパターンを使用
-4. **テストを追加**: 変更にテストを追加
-5. **品質チェック実行**: 全チェックが通ることを確認
-6. **PR提出**: 提供されたPRテンプレートを使用
-
-
-### コミット規約
-
-```
-[layer/scope] type: description
-
-- What: 変更内容の簡潔な説明
-- Why: 変更の理由  
-- How: 実装方法（複雑な場合のみ）
-```
-
-例：
-
-* `[base/components] feat: HmDataTableコンポーネントを追加`
-* `[main/pages] fix: モバイル表示のナビゲーション問題を修正`
-
-## 📚 ドキュメント
-
-* [`AGENTS.md`](./AGENTS.md) - AIエージェント開発の完全ガイド
-* [`repomix-output.md`](./repomix-output.md) - コードベース全体の構造
-* [Nuxt Docs](https://nuxt.com/docs) - フレームワークの公式ドキュメント
-* [Zod Docs](https://zod.dev) - スキーマバリデーションのドキュメント
-* [RSCSS](https://rscss.io) - CSS命名規則
 
 ## 🔗 便利なリンク
 

@@ -175,49 +175,6 @@ en:
 </i18n>
 ```
 
-## 🔧 Configuration
-
-### Environment Variables
-```bash
-# .env.local
-VITE_OUTPUT_ENV=local  # local/staging/production
-```
-
-### Layer Configuration
-Each layer has its own:
-- `nuxt.config.ts` - Nuxt configuration
-- `package.json` - Dependencies and scripts
-- `tsconfig.json` - TypeScript configuration
-
-## 🤝 Contributing
-
-1. **Read the guidelines**: Check [`AGENTS.md`](./AGENTS.md) for development standards
-2. **Create a feature branch**: `git checkout -b feature/amazing-feature`
-3. **Follow the code style**: Use the established patterns
-4. **Add tests**: Cover your changes with tests
-5. **Run quality checks**: Ensure all checks pass
-6. **Submit PR**: Use the provided PR template
-
-### Commit Convention
-```
-[layer/scope] type: description
-
-- What: Brief description of changes
-- Why: Reason for the change  
-- How: Implementation approach (if complex)
-```
-
-Examples:
-- `[base/components] feat: add HmDataTable component`
-- `[main/pages] fix: resolve navigation issue in mobile view`
-
-## 📚 Documentation
-
-- [`AGENTS.md`](./AGENTS.md) - Complete development guide for AI agents
-- [`repomix-output.md`](./repomix-output.md) - Full codebase structure
-- [Nuxt Docs](https://nuxt.com/docs) - Framework documentation
-- [Zod Docs](https://zod.dev) - Schema validation
-- [RSCSS](https://rscss.io) - CSS naming convention
 
 ## 🔗 Useful Links
 
