@@ -154,7 +154,6 @@ en:
 # .env.local
 VITE_OUTPUT_ENV=local  # local/staging/production
 ```
-
 ### Layer Configuration
 Each layer has its own:
 - `nuxt.config.ts` - Nuxt configuration
