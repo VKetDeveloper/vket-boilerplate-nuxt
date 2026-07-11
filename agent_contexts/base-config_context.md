@@ -743,6 +743,73 @@ export default {
 }
 ````
 
+## File: layers/base/reset.d.ts
+````typescript
+import '@total-typescript/ts-reset'
+````
+
+## File: layers/base/tsconfig.json
+````json
+{
+  // https://nuxt.com/docs/guide/concepts/typescript
+  "extends": [
+    "./.nuxt/tsconfig.server.json",
+    "./.nuxt/tsconfig.json",
+    "./tsconfig.shared.json"
+  ],
+}
+````
+
+## File: layers/base/tsconfig.shared.json
+````json
+{
+  "compilerOptions": {
+    "target": "ES2023",
+    "module": "preserve",
+    "lib": [
+      "dom",
+      "ES2023"
+    ],
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "strict": true,
+    "experimentalDecorators": true,
+    "noUncheckedIndexedAccess": true,
+    "jsx": "preserve",
+    "isolatedModules": true,
+    "typeRoots": [
+      "../../node_modules",
+      "../../node_modules/@types",
+      "./@types"
+    ],
+    "types": [
+      "vue3-toastify/global",
+      "unplugin-icons/types/vue",
+      "vite/client",
+      "vitest/globals"
+    ]
+  },
+  "vueCompilerOptions": {
+    "target": 3
+  },
+  "ts-node": {
+    "esm": true
+  },
+  "exclude": [
+    "node_modules",
+    ".output",
+    "dist",
+    "eslint.config.shared.mjs",
+    ".stylelintrc.shared.mjs",
+    "tsconfig.shared.json"
+  ]
+}
+````
+
 ## File: layers/base/nuxt.config.ts
 ````typescript
 import { defineNuxtConfig } from 'nuxt/config'
@@ -878,73 +945,6 @@ export default defineNuxtConfig({
 })
 ````
 
-## File: layers/base/reset.d.ts
-````typescript
-import '@total-typescript/ts-reset'
-````
-
-## File: layers/base/tsconfig.json
-````json
-{
-  // https://nuxt.com/docs/guide/concepts/typescript
-  "extends": [
-    "./.nuxt/tsconfig.server.json",
-    "./.nuxt/tsconfig.json",
-    "./tsconfig.shared.json"
-  ],
-}
-````
-
-## File: layers/base/tsconfig.shared.json
-````json
-{
-  "compilerOptions": {
-    "target": "ES2023",
-    "module": "preserve",
-    "lib": [
-      "dom",
-      "ES2023"
-    ],
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "allowJs": true,
-    "sourceMap": true,
-    "strict": true,
-    "experimentalDecorators": true,
-    "noUncheckedIndexedAccess": true,
-    "jsx": "preserve",
-    "isolatedModules": true,
-    "typeRoots": [
-      "../../node_modules",
-      "../../node_modules/@types",
-      "./@types"
-    ],
-    "types": [
-      "vue3-toastify/global",
-      "unplugin-icons/types/vue",
-      "vite/client",
-      "vitest/globals"
-    ]
-  },
-  "vueCompilerOptions": {
-    "target": 3
-  },
-  "ts-node": {
-    "esm": true
-  },
-  "exclude": [
-    "node_modules",
-    ".output",
-    "dist",
-    "eslint.config.shared.mjs",
-    ".stylelintrc.shared.mjs",
-    "tsconfig.shared.json"
-  ]
-}
-````
-
 ## File: layers/base/package.json
 ````json
 {
@@ -952,7 +952,7 @@ import '@total-typescript/ts-reset'
   "private": true,
   "type": "module",
   "version": "1.0.1",
-  "packageManager": "bun@1.3.9",
+  "packageManager": "bun@1.3.14",
   "scripts": {
     "postinstall": "if [ -x ../base/node_modules/.bin/nuxt ]; then ../base/node_modules/.bin/nuxt prepare; elif command -v nuxt >/dev/null 2>&1; then nuxt prepare; else echo 'skip nuxt prepare: nuxt not installed'; fi",
     "dev": "cross-env VITE_OUTPUT_ENV=\"$target\" nuxt dev -o",
@@ -977,7 +977,7 @@ import '@total-typescript/ts-reset'
     "test:e2e:setup": "playwright install chromium",
     "test:e2e:ui": "playwright test --ui",
     "exec-test": "baseDir='./app/test' ext='\\.spec\\.ts' bun exec-if-file-exists",
-    "exec-if-file-exists": "[ \"$(find $baseDir | grep \"${ext}$\" | wc -l)\" -gt 0 ] && $cmd || true",
+    "exec-if-file-exists": "if [ \"$(find $baseDir | grep \"${ext}$\" | wc -l)\" -gt 0 ]; then $cmd; else true; fi",
     "package-update": "bunx npm-check-updates -i",
     "clean-install": "bun run ../../scripts/clean_install.js",
     "allclean-install": "bun run ../../scripts/clean_install.js all"
@@ -987,76 +987,76 @@ import '@total-typescript/ts-reset'
     "@headlessui/vue": "^1.7.23",
     "@nuxtjs/device": "^4.0.0",
     "@nuxtjs/google-fonts": "^3.2.0",
-    "@nuxtjs/i18n": "^10.2.3",
-    "@nuxtjs/robots": "^5.7.0",
-    "@vueuse/nuxt": "^14.2.1",
-    "dayjs": "^1.11.19",
-    "nuxt": "^4.3.1",
+    "@nuxtjs/i18n": "^10.4.0",
+    "@nuxtjs/robots": "^6.1.2",
+    "@vueuse/nuxt": "^14.3.0",
+    "dayjs": "^1.11.21",
+    "nuxt": "^4.4.8",
     "ress": "^5.0.2",
-    "universal-cookie": "^8.0.1",
-    "uuid": "^13.0.0",
-    "vue": "^3.5.28",
+    "universal-cookie": "^8.1.2",
+    "uuid": "^14.0.1",
+    "vue": "^3.5.39",
     "vue-advanced-cropper": "^2.8.9",
-    "vue-router": "^5.0.3",
-    "vue3-toastify": "^0.2.8"
+    "vue-router": "^5.1.0",
+    "vue3-toastify": "^0.2.9"
   },
   "devDependencies": {
     "@anatine/zod-mock": "^3.14.0",
     "@eslint/js": "^10.0.1",
-    "@faker-js/faker": "^10.3.0",
-    "@fast-check/vitest": "^0.2.4",
+    "@faker-js/faker": "^10.5.0",
+    "@fast-check/vitest": "^0.4.1",
     "@iconify-json/ri": "^1.2.10",
-    "@nuxt/eslint": "^1.15.1",
-    "@nuxt/test-utils": "^4.0.0",
-    "@playwright/test": "^1.58.2",
+    "@nuxt/eslint": "^1.16.0",
+    "@nuxt/test-utils": "^4.0.3",
+    "@playwright/test": "^1.61.1",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/user-event": "^14.6.1",
     "@testing-library/vue": "^8.1.0",
     "@total-typescript/ts-reset": "^0.6.1",
-    "@types/jsdom": "^27.0.0",
-    "@types/node": "^25.3.0",
+    "@types/jsdom": "^28.0.3",
+    "@types/node": "^26.1.0",
     "@types/postcss-url": "^10.0.4",
     "@types/uuid": "^11.0.0",
     "@vee-validate/i18n": "^4.15.1",
-    "@vitejs/plugin-vue": "^6.0.4",
-    "@vitejs/plugin-vue-jsx": "^5.1.4",
-    "@vitest/coverage-v8": "^4.0.18",
-    "@vitest/ui": "^4.0.18",
-    "@vue/runtime-dom": "^3.5.28",
-    "@vue/test-utils": "^2.4.6",
+    "@vitejs/plugin-vue": "^6.0.7",
+    "@vitejs/plugin-vue-jsx": "^5.1.6",
+    "@vitest/coverage-v8": "^4.1.9",
+    "@vitest/ui": "^4.1.9",
+    "@vue/runtime-dom": "^3.5.39",
+    "@vue/test-utils": "^2.4.11",
     "camelcase-keys": "^10.0.2",
     "cross-env": "^10.1.0",
-    "eslint": "^10.0.1",
-    "fast-check": "^4.5.3",
-    "globals": "^17.3.0",
-    "happy-dom": "^20.7.0",
+    "eslint": "^10.6.0",
+    "fast-check": "^4.8.0",
+    "globals": "^17.7.0",
+    "happy-dom": "^20.10.6",
     "humps": "^2.0.1",
-    "jsdom": "^28.1.0",
+    "jsdom": "^29.1.1",
     "ofetch": "^1.5.1",
     "postcss-html": "^1.8.1",
     "postcss-import": "^16.1.1",
-    "postcss-url": "^10.1.3",
-    "sass-embedded": "^1.97.3",
+    "postcss-url": "^10.1.4",
+    "sass-embedded": "^1.100.0",
     "snake-case": "^4.0.0",
     "snakecase-keys": "^9.0.2",
-    "stylelint": "^17.3.0",
-    "stylelint-config-clean-order": "^8.0.1",
+    "stylelint": "^17.14.0",
+    "stylelint-config-clean-order": "^10.0.0",
     "stylelint-config-standard-scss": "^17.0.0",
     "stylelint-rscss": "^0.4.0",
-    "tsx": "^4.21.0",
-    "type-fest": "^5.4.4",
-    "typescript": "5.9.3",
-    "typescript-eslint": "^8.56.0",
+    "tsx": "^4.23.0",
+    "type-fest": "^5.7.0",
+    "typescript": "6.0.3",
+    "typescript-eslint": "^8.62.1",
     "unplugin-auto-import": "^21.0.0",
     "unplugin-icons": "^23.0.1",
-    "unplugin-vue-components": "^31.0.0",
+    "unplugin-vue-components": "^32.1.0",
     "vee-validate": "^5.0.0-beta.0",
     "vite-plugin-yaml": "^1.0.5",
-    "vite-svg-loader": "^5.1.0",
-    "vitest": "^4.0.18",
-    "vue-tsc": "^3.2.5",
+    "vite-svg-loader": "^5.1.1",
+    "vitest": "^4.1.9",
+    "vue-tsc": "^3.3.6",
     "yaml-loader": "^0.9.0",
-    "zod": "^4.3.6"
+    "zod": "^4.4.3"
   },
   "engines": {
     "node": "22.x"

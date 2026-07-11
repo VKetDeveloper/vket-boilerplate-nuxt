@@ -43,6 +43,8 @@ layers/
       models/
         json.ts
         todo.ts
+      repositories/
+        .gitkeep
       utils/
         api.ts
         factory.ts
@@ -50,40 +52,6 @@ layers/
 ```
 
 # Files
-
-## File: layers/showcases/app/composables/useApi.ts
-````typescript
-/**
- * Nuxt3 FWにおける API composables。
- *
- * @packageDocumentation
- */
-
-import type { UseFetchOptions } from 'nuxt/app'
-import { useFetch } from 'nuxt/app'
-import type { FetchOptions } from 'ofetch'
-import { ref } from 'vue'
-import type { RepositoryKey } from '#showcases/app/utils/factory'
-import { repositoryFactory } from '#showcases/app/utils/factory'
-
-export const fetcher = (
-  path: string,
-  options: UseFetchOptions<FetchOptions>,
-) => {
-  return useFetch(path, options)
-}
-
-const _getRepo = <K extends RepositoryKey>(endpoint: K) => {
-  return repositoryFactory.get(endpoint)
-}
-
-export default function useApi<K extends RepositoryKey>(endpoint: K) {
-  const repository = ref(_getRepo(endpoint))
-  return {
-    repository,
-  }
-}
-````
 
 ## File: layers/showcases/app/models/json.ts
 ````typescript
@@ -118,6 +86,45 @@ export const todoSchema = z.object({
 })
 
 export type Todo = z.infer<typeof todoSchema>
+````
+
+## File: layers/showcases/app/repositories/.gitkeep
+````
+
+````
+
+## File: layers/showcases/app/composables/useApi.ts
+````typescript
+/**
+ * Nuxt3 FWにおける API composables。
+ *
+ * @packageDocumentation
+ */
+
+import type { UseFetchOptions } from 'nuxt/app'
+import { useFetch } from 'nuxt/app'
+import type { FetchOptions } from 'ofetch'
+import { ref } from 'vue'
+import type { RepositoryKey } from '#showcases/app/utils/factory'
+import { repositoryFactory } from '#showcases/app/utils/factory'
+
+export const fetcher = (
+  path: string,
+  options: UseFetchOptions<FetchOptions>,
+) => {
+  return useFetch(path, options)
+}
+
+const _getRepo = <K extends RepositoryKey>(endpoint: K) => {
+  return repositoryFactory.get(endpoint)
+}
+
+export default function useApi<K extends RepositoryKey>(endpoint: K) {
+  const repository = ref(_getRepo(endpoint))
+  return {
+    repository,
+  }
+}
 ````
 
 ## File: layers/showcases/app/utils/api.ts
